@@ -6,7 +6,8 @@
   <g:plusone></g:plusone>
  </div>
  <div style="float: left; clear: none; padding: 5px; padding-left: 5.5px; padding-right: 5.5px;">
-	<iframe src="http://www.facebook.com/plugins/like.php?app_id=205356566188481&amp;href=<%=url%>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+	<% escaped_url = URI.escape(url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))%>
+	<iframe src="http://www.facebook.com/plugins/like.php?app_id=205356566188481&amp;href=<%=escaped_url%>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
  </div>
 </div>
 
