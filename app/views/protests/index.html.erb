@@ -1,0 +1,49 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		var newDelhi = new google.maps.LatLng(28.35, 77.12);
+    var options = {
+      zoom: 4,
+      center: newDelhi,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+		// google.maps.event.addListener(map, 'click', function(event) {
+		// 		    console.log(event.latLng);
+		// 		  });
+		
+		function addMarker(title, latitude, longitude) {
+			var latLong = new google.maps.LatLng(latitude, longitude);
+			var marker = new google.maps.Marker({
+		      position: latLong,
+		      title: title
+		  });
+			marker.setMap(map);
+		}
+		
+		// Add Markers for locations
+		<% @protests.each do |protest| -%>
+			addMarker("<%=protest.title%>", <%=protest.latitude%>, <%=protest.longitude%>);
+		<% end -%>
+	});
+</script>
+
+
+<h1>
+	<%= image_tag 'http://3.bp.blogspot.com/-9Sh9sVYsyIc/TZ3rQbmgQlI/AAAAAAAAAGA/jdCgQBs1PM8/s1600/anna-hazare.png', :class => 'logo' %>
+	Support Anna Hazare! Start/Join a protest
+	<%= link_to (image_tag 'http://www.retailpartnersinc.com/resources/start-button.jpg', :class => 'start_new', :alt => 'Start'), new_protest_path %>
+</h1>
+
+<div id="map_canvas"></div>
+
+<table>
+<% @protests.each do |protest| %>
+  <tr>
+    <td><%= image_tag 'http://maps.google.com/help/maps/edit/images/marker-noalpha.png' %></td>
+    <td><%= protest.title %></td>
+    <td><%= protest.city %></td>
+    <td><%= link_to (image_tag 'http://www.worldcup2010tips.com/images/button.png', :class => 'join_now', :alt => 'Join'), protest %></td>
+  </tr>
+<% end %>
+</table>
+

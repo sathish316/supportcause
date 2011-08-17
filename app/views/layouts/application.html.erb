@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Support</title>
+  <%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
+  <%= csrf_meta_tag %>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map_canvas { width: 80%; height: 60%}
+  .logo { width: 50px; height: 50px}
+  .start_new { width: 60px; height: 60px; border: 0;}
+  .join_now { width: 50px; height: 50px; border: 0;}
+</style>
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+</head>
+<body>
+	
+	<%= yield %>
+
+</body>
+</html>

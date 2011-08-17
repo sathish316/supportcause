@@ -1,0 +1,36 @@
+<div id="map_canvas"></div>
+
+<%= form_for(@protest) do |f| %>
+  <% if @protest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@protest.errors.count, "error") %> prohibited this protest from being saved:</h2>
+
+      <ul>
+      <% @protest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 5, :cols => 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :slogan %><br />
+    <%= f.text_field :slogan %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

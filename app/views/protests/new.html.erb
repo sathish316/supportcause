@@ -1,0 +1,45 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		var marker;
+		var newDelhi = new google.maps.LatLng(28.35, 77.12);
+    var options = {
+      zoom: 4,
+      center: newDelhi,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+		// Add Marker on click
+		google.maps.event.addListener(map, 'click', function(event) {
+			if(marker != null)
+				return;
+			marker = addMarker("New", event.latLng.lat(), event.latLng.lng(), true);
+	  });
+	
+		// Set latitude and longitude on submit
+		$('#new_protest').submit(function(event){
+			if(marker == null)
+				return false;
+			$('#protest_latitude').val(marker.position.lat());
+			$('#protest_longitude').val(marker.position.lng())
+			return true;
+		});
+		
+		function addMarker(title, latitude, longitude, draggable) {
+			var latLong = new google.maps.LatLng(latitude, longitude);
+			var marker = new google.maps.Marker({
+		      position: latLong,
+		      title: title,
+					draggable: draggable
+		  });
+			marker.setMap(map);
+			return marker;
+		}
+	});
+</script>
+
+<h1>Start New Protest</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', protests_path %>

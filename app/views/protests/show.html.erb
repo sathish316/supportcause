@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		var latLng = new google.maps.LatLng(<%=@protest.latitude%>, <%=@protest.longitude%>);
+    var options = {
+      zoom: 8,
+      center: latLng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+		addMarker("<%=@protest.title%>", <%=@protest.latitude%>, <%=@protest.longitude%>);
+		
+		function addMarker(title, latitude, longitude) {
+			var latLong = new google.maps.LatLng(latitude, longitude);
+			var marker = new google.maps.Marker({
+		      position: latLong,
+		      title: title
+		  });
+			marker.setMap(map);
+			return marker;
+		}
+	});
+</script>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1><%=@protest.title%> at <%=@protest.city%></h1>
+<h2><%=@protest.slogan%></h2>
+<div id="map_canvas"></div>
+
+<p>
+  <%= @protest.description %>
+</p>
+
+<%= link_to 'Back', protests_path %>
