@@ -35,3 +35,6 @@
 </p>
 
 <%= link_to 'Back', protests_path %>
+
+<%= render 'disqus', disqus_id: dom_id(@protest), url: protest_url(@protest) %>
+
