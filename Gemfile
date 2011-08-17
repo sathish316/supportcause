@@ -8,8 +8,8 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 
 # Use unicorn as the web server
-# gem 'unicorn'
-gem 'mongrel'
+gem 'unicorn'
+# gem 'mongrel'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -33,3 +33,4 @@ gem "heroku"
 # end
 
 gem "rake", '0.8.7'
+gem 'daemons', '1.1.0'
