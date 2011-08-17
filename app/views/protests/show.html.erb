@@ -26,6 +26,8 @@
 
 <h1><%=@protest.title%> at <%=@protest.city%></h1>
 <h2><%=@protest.slogan%></h2>
+
+<%= render 'social', url: protest_path(@protest)%>
 <div id="map_canvas"></div>
 
 <p>
